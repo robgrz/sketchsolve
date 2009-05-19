@@ -2,12 +2,51 @@
 
 = Introduction =
 
-Add your content here.
+Sketch solve is really just intended to be a constraints solving library. I hope that some of you CAD loving people will use the solver in your gui CAD applications. The interface between your applications and sketchsolve will hopefully painless. With only slight modification of sketchsolve from it's current state it will also be able solve assembly constraints for 3d assemblies. 
 
+== Primatives ==
 
-= Details =
+In the case of a 2d sketch think of a 2d primitives (points, lines, arcs, and circles) as the skeleton of your model. Well I suppose that for a 2d drawing it is the skeleton and the drawing it's self. Points are made of parameters, in this case doubles precision floating point values. Lines are made up of two points. Arcs are made with three points, START point, END point, CENTER point. Circles are made of the CENTER point and the RADIUS parameter. However, in the end all the parameters that make up the points and the Radius of a circle completely define the skeleton. We want to create an array of these parameters that we will manipulate to satisfy the sketch constraints. 
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+== Define the constraints ==
+
+We also want a way to quickly and easily define the constraint for the solver. For this we will use a structure that is define in the following way:
+
+{{{
+struct constraint
+{
+        int type;
+        point point1;
+        point point2;
+        line line1;
+        line line2;
+        circle circle1;
+        circle circle2;
+        arc arc1;
+        arc arc2;
+        double *parameter; //radius, length, angle etc...
+};
+}}}
+
+Suppose we want to create a constraint to constrain a line to be horizontal. Here is some example code:
+
+{{{
+double parameters[100],constants[100];
+
+point points[100];
+line lines[100];
+
+constraint cons[100];
+
+parameters[0]=0;// First point X coordinate
+parameters[1]=0;// First point Y coordinate
+parameters[2]=10;// Second point X coordinate
+parameters[3]=2;// Second point Y coordinate
+
+//Define the first point
+points[0].x = &parameters[0]; //Pointer to the X coordinate;
+points[0].y = &parameters[1]; //Pointer to the Y coordinate;
+
+//Define the second point
+points[1].x = &parameters[2]; //Pointer to the X coordinate;
+points[1].y = &parameters[3]; //Pointer to the Y coordinate;
