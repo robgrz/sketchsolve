@@ -69,3 +69,5 @@ To solve the sketch simply call the solve function with the appropriate paramete
 {{{
 results = solve(parameters, numberOfParameters , constraints , numberOfConstraints)  
 }}}
+
+The parameters argument is a pointer to the parameter array. The numberOfParameters argument is simply the length of the parameters array. The constraints argument is a pointer to the constraint array. The numberOfConstraints argument is simply the length of the constraint array. 
