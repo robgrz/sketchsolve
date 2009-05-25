@@ -1,4 +1,4 @@
-# Current List of TODO Items for the project
+*Current List of TODO Items for the project*
 
 = Functionality TODO List =
 
