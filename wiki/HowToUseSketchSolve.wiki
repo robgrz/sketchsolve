@@ -63,6 +63,8 @@ cons[0].line1 = lines[0];
 
 For any constraint we simply define the appropriate parameters for that constraint. Note that only pointers to parameters are used.
 
+*NOTE:* Every instance of an arc must have a _arcrules_ constraint added to make sure than resulting arcs are valid. Without this constraint added for every arc in the sketch there is no guarantee that the arc center point will be at the center of the arc, DISASTROUS!!!!!
+
 == Solve the constraints ==
 
 To solve the sketch simply call the solve function with the appropriate parameters. The solve function takes five parameters as shown below:
