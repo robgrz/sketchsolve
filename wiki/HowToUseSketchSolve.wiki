@@ -1,4 +1,4 @@
-#How to use SketchSolve.
+#summary Notes on how to use SketchSolve.
 
 = Introduction =
 
