@@ -1,3 +1,5 @@
 #summary Table of possible 2D constraints
 
 http://sketchsolve.googlecode.com/svn/trunk/SketchSolveDocs/ConstraintsTable.JPG
+
+The constraints in RED still need to be added to the code. 
